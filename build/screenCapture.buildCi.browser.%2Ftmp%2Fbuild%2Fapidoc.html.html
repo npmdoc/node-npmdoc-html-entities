@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/mdevils/node-html-entities#readme"
-
-    >html-entities (v1.2.0)</a>
+    <a href="https://github.com/mdevils/node-html-entities#readme">html-entities (v1.2.0)</a>
 </h1>
 <h4>Faster HTML entities encode/decode library.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.html-entities">module html-entities</a><ol>
 
@@ -1013,16 +1006,16 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Html4Entities.prototype.decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;(#?[\w\d]+);?/g, function(s, entity) {
+    return str.replace(/&amp;(#?[\w\d]+);?/g, function(s, entity) {
         var chr;
-        if (entity.charAt(0) === &#x22;#&#x22;) {
-            var code = entity.charAt(1).toLowerCase() === &#x27;x&#x27; ?
+        if (entity.charAt(0) === "#") {
+            var code = entity.charAt(1).toLowerCase() === 'x' ?
                 parseInt(entity.substr(2), 16) :
                 parseInt(entity.substr(1));
 
-            if (!(isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535)) {
+            if (!(isNaN(code) || code &lt; -32768 || code &gt; 65535)) {
                 chr = String.fromCharCode(code);
             }
         } else {
@@ -1046,13 +1039,13 @@
     <li>description and source-code<pre class="apidocCodePre">Html4Entities.prototype.encode = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var alpha = numIndex[str.charCodeAt(i)];
-        result += alpha ? &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22; : str.charAt(i);
+        result += alpha ? "&amp;" + alpha + ";" : str.charAt(i);
         i++;
     }
     return result;
@@ -1072,17 +1065,17 @@
     <li>description and source-code<pre class="apidocCodePre">Html4Entities.prototype.encodeNonASCII = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++;
     }
     return result;
@@ -1102,17 +1095,17 @@
     <li>description and source-code<pre class="apidocCodePre">Html4Entities.prototype.encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var cc = str.charCodeAt(i);
         var alpha = numIndex[cc];
         if (alpha) {
-            result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
-        } else if (cc &#x3c; 32 || cc &#x3e; 126) {
-            result += &#x22;&#x26;#&#x22; + cc + &#x22;;&#x22;;
+            result += "&amp;" + alpha + ";";
+        } else if (cc &lt; 32 || cc &gt; 126) {
+            result += "&amp;#" + cc + ";";
         } else {
             result += str.charAt(i);
         }
@@ -1207,16 +1200,16 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Html5Entities.prototype.decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;(#?[\w\d]+);?/g, function(s, entity) {
+    return str.replace(/&amp;(#?[\w\d]+);?/g, function(s, entity) {
         var chr;
-        if (entity.charAt(0) === &#x22;#&#x22;) {
-            var code = entity.charAt(1) === &#x27;x&#x27; ?
+        if (entity.charAt(0) === "#") {
+            var code = entity.charAt(1) === 'x' ?
                 parseInt(entity.substr(2).toLowerCase(), 16) :
                 parseInt(entity.substr(1));
 
-            if (!(isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535)) {
+            if (!(isNaN(code) || code &lt; -32768 || code &gt; 65535)) {
                 chr = String.fromCharCode(code);
             }
         } else {
@@ -1240,21 +1233,21 @@
     <li>description and source-code<pre class="apidocCodePre">Html5Entities.prototype.encode = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var charInfo = charIndex[str.charCodeAt(i)];
         if (charInfo) {
             var alpha = charInfo[str.charCodeAt(i + 1)];
             if (alpha) {
                 i++;
             } else {
-                alpha = charInfo[&#x27;&#x27;];
+                alpha = charInfo[''];
             }
             if (alpha) {
-                result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+                result += "&amp;" + alpha + ";";
                 i++;
                 continue;
             }
@@ -1279,17 +1272,17 @@
     <li>description and source-code<pre class="apidocCodePre">Html5Entities.prototype.encodeNonASCII = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++
     }
     return result;
@@ -1309,11 +1302,11 @@
     <li>description and source-code<pre class="apidocCodePre">Html5Entities.prototype.encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
         var charInfo = charIndex[c];
         if (charInfo) {
@@ -1321,16 +1314,16 @@
             if (alpha) {
                 i++;
             } else {
-                alpha = charInfo[&#x27;&#x27;];
+                alpha = charInfo[''];
             }
             if (alpha) {
-                result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+                result += "&amp;" + alpha + ";";
                 i++;
                 continue;
             }
         }
-        if (c &#x3c; 32 || c &#x3e; 126) {
-            result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        if (c &lt; 32 || c &gt; 126) {
+            result += '&amp;#' + c + ';';
         } else {
             result += str.charAt(i);
         }
@@ -1425,16 +1418,16 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">XmlEntities.prototype.decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;#?[0-9a-zA-Z]+;?/g, function(s) {
-        if (s.charAt(1) === &#x27;#&#x27;) {
-            var code = s.charAt(2).toLowerCase() === &#x27;x&#x27; ?
+    return str.replace(/&amp;#?[0-9a-zA-Z]+;?/g, function(s) {
+        if (s.charAt(1) === '#') {
+            var code = s.charAt(2).toLowerCase() === 'x' ?
                 parseInt(s.substr(3), 16) :
                 parseInt(s.substr(2));
 
-            if (isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535) {
-                return &#x27;&#x27;;
+            if (isNaN(code) || code &lt; -32768 || code &gt; 65535) {
+                return '';
             }
             return String.fromCharCode(code);
         }
@@ -1455,9 +1448,9 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">XmlEntities.prototype.encode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x3c;|&#x3e;|&#x22;|&#x27;|&#x26;/g, function(s) {
+    return str.replace(/&lt;|&gt;|"|'|&amp;/g, function(s) {
         return CHAR_S_INDEX[s];
     });
 }</pre></li>
@@ -1476,17 +1469,17 @@
     <li>description and source-code<pre class="apidocCodePre">XmlEntities.prototype.encodeNonASCII = function (str) {
     var strLenght = str.length;
     if (strLenght === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLenght) {
+    while (i &lt; strLenght) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++;
     }
     return result;
@@ -1506,20 +1499,20 @@
     <li>description and source-code<pre class="apidocCodePre">XmlEntities.prototype.encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
         var alpha = CHAR_INDEX[c];
         if (alpha) {
-            result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+            result += "&amp;" + alpha + ";";
             i++;
             continue;
         }
-        if (c &#x3c; 32 || c &#x3e; 126) {
-            result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        if (c &lt; 32 || c &gt; 126) {
+            result += '&amp;#' + c + ';';
         } else {
             result += str.charAt(i);
         }
@@ -1567,24 +1560,24 @@
     return new Html4Entities().decode(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -1604,17 +1597,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1635,18 +1628,18 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1671,17 +1664,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1706,24 +1699,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     return new Html4Entities().decode(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -1748,17 +1741,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1784,18 +1777,18 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1825,17 +1818,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1858,16 +1851,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;(#?[\w\d]+);?/g, function(s, entity) {
+    return str.replace(/&amp;(#?[\w\d]+);?/g, function(s, entity) {
         var chr;
-        if (entity.charAt(0) === &#x22;#&#x22;) {
-            var code = entity.charAt(1).toLowerCase() === &#x27;x&#x27; ?
+        if (entity.charAt(0) === "#") {
+            var code = entity.charAt(1).toLowerCase() === 'x' ?
                 parseInt(entity.substr(2), 16) :
                 parseInt(entity.substr(1));
 
-            if (!(isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535)) {
+            if (!(isNaN(code) || code &lt; -32768 || code &gt; 65535)) {
                 chr = String.fromCharCode(code);
             }
         } else {
@@ -1877,24 +1870,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -1910,13 +1903,13 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
     <li>description and source-code<pre class="apidocCodePre">encode = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var alpha = numIndex[str.charCodeAt(i)];
-        result += alpha ? &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22; : str.charAt(i);
+        result += alpha ? "&amp;" + alpha + ";" : str.charAt(i);
         i++;
     }
     return result;
@@ -1925,17 +1918,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -1954,35 +1947,35 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonASCII = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++;
     }
     return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2004,17 +1997,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var cc = str.charCodeAt(i);
         var alpha = numIndex[cc];
         if (alpha) {
-            result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
-        } else if (cc &#x3c; 32 || cc &#x3e; 126) {
-            result += &#x22;&#x26;#&#x22; + cc + &#x22;;&#x22;;
+            result += "&amp;" + alpha + ";";
+        } else if (cc &lt; 32 || cc &gt; 126) {
+            result += "&amp;#" + cc + ";";
         } else {
             result += str.charAt(i);
         }
@@ -2025,17 +2018,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2058,16 +2051,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;(#?[\w\d]+);?/g, function(s, entity) {
+    return str.replace(/&amp;(#?[\w\d]+);?/g, function(s, entity) {
         var chr;
-        if (entity.charAt(0) === &#x22;#&#x22;) {
-            var code = entity.charAt(1).toLowerCase() === &#x27;x&#x27; ?
+        if (entity.charAt(0) === "#") {
+            var code = entity.charAt(1).toLowerCase() === 'x' ?
                 parseInt(entity.substr(2), 16) :
                 parseInt(entity.substr(1));
 
-            if (!(isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535)) {
+            if (!(isNaN(code) || code &lt; -32768 || code &gt; 65535)) {
                 chr = String.fromCharCode(code);
             }
         } else {
@@ -2077,24 +2070,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -2115,13 +2108,13 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
     <li>description and source-code<pre class="apidocCodePre">encode = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var alpha = numIndex[str.charCodeAt(i)];
-        result += alpha ? &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22; : str.charAt(i);
+        result += alpha ? "&amp;" + alpha + ";" : str.charAt(i);
         i++;
     }
     return result;
@@ -2130,17 +2123,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2164,35 +2157,35 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonASCII = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++;
     }
     return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2219,17 +2212,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var cc = str.charCodeAt(i);
         var alpha = numIndex[cc];
         if (alpha) {
-            result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
-        } else if (cc &#x3c; 32 || cc &#x3e; 126) {
-            result += &#x22;&#x26;#&#x22; + cc + &#x22;;&#x22;;
+            result += "&amp;" + alpha + ";";
+        } else if (cc &lt; 32 || cc &gt; 126) {
+            result += "&amp;#" + cc + ";";
         } else {
             result += str.charAt(i);
         }
@@ -2240,17 +2233,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2288,24 +2281,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
    return new Html5Entities().decode(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -2325,17 +2318,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2356,18 +2349,18 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2392,17 +2385,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2427,24 +2420,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
    return new Html5Entities().decode(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -2469,17 +2462,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2505,18 +2498,18 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2546,17 +2539,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2579,16 +2572,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;(#?[\w\d]+);?/g, function(s, entity) {
+    return str.replace(/&amp;(#?[\w\d]+);?/g, function(s, entity) {
         var chr;
-        if (entity.charAt(0) === &#x22;#&#x22;) {
-            var code = entity.charAt(1) === &#x27;x&#x27; ?
+        if (entity.charAt(0) === "#") {
+            var code = entity.charAt(1) === 'x' ?
                 parseInt(entity.substr(2).toLowerCase(), 16) :
                 parseInt(entity.substr(1));
 
-            if (!(isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535)) {
+            if (!(isNaN(code) || code &lt; -32768 || code &gt; 65535)) {
                 chr = String.fromCharCode(code);
             }
         } else {
@@ -2598,24 +2591,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -2631,21 +2624,21 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
     <li>description and source-code<pre class="apidocCodePre">encode = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var charInfo = charIndex[str.charCodeAt(i)];
         if (charInfo) {
             var alpha = charInfo[str.charCodeAt(i + 1)];
             if (alpha) {
                 i++;
             } else {
-                alpha = charInfo[&#x27;&#x27;];
+                alpha = charInfo[''];
             }
             if (alpha) {
-                result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+                result += "&amp;" + alpha + ";";
                 i++;
                 continue;
             }
@@ -2659,17 +2652,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2688,35 +2681,35 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonASCII = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++
     }
     return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2738,11 +2731,11 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
         var charInfo = charIndex[c];
         if (charInfo) {
@@ -2750,16 +2743,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
             if (alpha) {
                 i++;
             } else {
-                alpha = charInfo[&#x27;&#x27;];
+                alpha = charInfo[''];
             }
             if (alpha) {
-                result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+                result += "&amp;" + alpha + ";";
                 i++;
                 continue;
             }
         }
-        if (c &#x3c; 32 || c &#x3e; 126) {
-            result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        if (c &lt; 32 || c &gt; 126) {
+            result += '&amp;#' + c + ';';
         } else {
             result += str.charAt(i);
         }
@@ -2770,17 +2763,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2803,16 +2796,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;(#?[\w\d]+);?/g, function(s, entity) {
+    return str.replace(/&amp;(#?[\w\d]+);?/g, function(s, entity) {
         var chr;
-        if (entity.charAt(0) === &#x22;#&#x22;) {
-            var code = entity.charAt(1) === &#x27;x&#x27; ?
+        if (entity.charAt(0) === "#") {
+            var code = entity.charAt(1) === 'x' ?
                 parseInt(entity.substr(2).toLowerCase(), 16) :
                 parseInt(entity.substr(1));
 
-            if (!(isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535)) {
+            if (!(isNaN(code) || code &lt; -32768 || code &gt; 65535)) {
                 chr = String.fromCharCode(code);
             }
         } else {
@@ -2822,24 +2815,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -2860,21 +2853,21 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
     <li>description and source-code<pre class="apidocCodePre">encode = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var charInfo = charIndex[str.charCodeAt(i)];
         if (charInfo) {
             var alpha = charInfo[str.charCodeAt(i + 1)];
             if (alpha) {
                 i++;
             } else {
-                alpha = charInfo[&#x27;&#x27;];
+                alpha = charInfo[''];
             }
             if (alpha) {
-                result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+                result += "&amp;" + alpha + ";";
                 i++;
                 continue;
             }
@@ -2888,17 +2881,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2922,35 +2915,35 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonASCII = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++
     }
     return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -2977,11 +2970,11 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
         var charInfo = charIndex[c];
         if (charInfo) {
@@ -2989,16 +2982,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
             if (alpha) {
                 i++;
             } else {
-                alpha = charInfo[&#x27;&#x27;];
+                alpha = charInfo[''];
             }
             if (alpha) {
-                result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+                result += "&amp;" + alpha + ";";
                 i++;
                 continue;
             }
         }
-        if (c &#x3c; 32 || c &#x3e; 126) {
-            result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        if (c &lt; 32 || c &gt; 126) {
+            result += '&amp;#' + c + ';';
         } else {
             result += str.charAt(i);
         }
@@ -3009,17 +3002,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3057,24 +3050,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
    return new XmlEntities().decode(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -3094,17 +3087,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3125,18 +3118,18 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3161,17 +3154,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3196,24 +3189,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
    return new XmlEntities().decode(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -3238,17 +3231,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3274,18 +3267,18 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3315,17 +3308,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3348,16 +3341,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;#?[0-9a-zA-Z]+;?/g, function(s) {
-        if (s.charAt(1) === &#x27;#&#x27;) {
-            var code = s.charAt(2).toLowerCase() === &#x27;x&#x27; ?
+    return str.replace(/&amp;#?[0-9a-zA-Z]+;?/g, function(s) {
+        if (s.charAt(1) === '#') {
+            var code = s.charAt(2).toLowerCase() === 'x' ?
                 parseInt(s.substr(3), 16) :
                 parseInt(s.substr(2));
 
-            if (isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535) {
-                return &#x27;&#x27;;
+            if (isNaN(code) || code &lt; -32768 || code &gt; 65535) {
+                return '';
             }
             return String.fromCharCode(code);
         }
@@ -3365,24 +3358,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -3397,9 +3390,9 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">encode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x3c;|&#x3e;|&#x22;|&#x27;|&#x26;/g, function(s) {
+    return str.replace(/&lt;|&gt;|"|'|&amp;/g, function(s) {
         return CHAR_S_INDEX[s];
     });
 }</pre></li>
@@ -3407,17 +3400,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3436,35 +3429,35 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonASCII = function (str) {
     var strLenght = str.length;
     if (strLenght === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLenght) {
+    while (i &lt; strLenght) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++;
     }
     return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3486,20 +3479,20 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
         var alpha = CHAR_INDEX[c];
         if (alpha) {
-            result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+            result += "&amp;" + alpha + ";";
             i++;
             continue;
         }
-        if (c &#x3c; 32 || c &#x3e; 126) {
-            result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        if (c &lt; 32 || c &gt; 126) {
+            result += '&amp;#' + c + ';';
         } else {
             result += str.charAt(i);
         }
@@ -3510,17 +3503,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3543,16 +3536,16 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x26;#?[0-9a-zA-Z]+;?/g, function(s) {
-        if (s.charAt(1) === &#x27;#&#x27;) {
-            var code = s.charAt(2).toLowerCase() === &#x27;x&#x27; ?
+    return str.replace(/&amp;#?[0-9a-zA-Z]+;?/g, function(s) {
+        if (s.charAt(1) === '#') {
+            var code = s.charAt(2).toLowerCase() === 'x' ?
                 parseInt(s.substr(3), 16) :
                 parseInt(s.substr(2));
 
-            if (isNaN(code) || code &#x3c; -32768 || code &#x3e; 65535) {
-                return &#x27;&#x27;;
+            if (isNaN(code) || code &lt; -32768 || code &gt; 65535) {
+                return '';
             }
             return String.fromCharCode(code);
         }
@@ -3560,24 +3553,24 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#
-x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">decode</span>('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#
+x26;copy;&amp;reg;&amp;#8710;')); // &lt;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
 
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
+var Entities = require('html-entities').AllHtmlEntities;
 ...</pre></li>
     </ul>
 
@@ -3597,9 +3590,9 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">encode = function (str) {
     if (str.length === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    return str.replace(/&#x3c;|&#x3e;|&#x22;|&#x27;|&#x26;/g, function(s) {
+    return str.replace(/&lt;|&gt;|"|'|&amp;/g, function(s) {
         return CHAR_S_INDEX[s];
     });
 }</pre></li>
@@ -3607,17 +3600,17 @@ var Entities = require(&#x27;html-entities&#x27;).AllHtmlEntities;
 HTML validity and XSS attack prevention you can achieve from XmlEntities class.
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26
-;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.<span class="apidocCodeKeywordSpan">encode</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;
+;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3641,35 +3634,35 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonASCII = function (str) {
     var strLenght = str.length;
     if (strLenght === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLenght) {
+    while (i &lt; strLenght) {
         var c = str.charCodeAt(i);
-        if (c &#x3c;= 255) {
+        if (c &lt;= 255) {
             result += str[i++];
             continue;
         }
-        result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        result += '&amp;#' + c + ';';
         i++;
     }
     return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.encodeNonUTF(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#
-x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.encodeNonUTF('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;#
+x26;amp;&amp;#169;&amp;#174;
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonASCII</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x3c;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3696,20 +3689,20 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>description and source-code<pre class="apidocCodePre">encodeNonUTF = function (str) {
     var strLength = str.length;
     if (strLength === 0) {
-        return &#x27;&#x27;;
+        return '';
     }
-    var result = &#x27;&#x27;;
+    var result = '';
     var i = 0;
-    while (i &#x3c; strLength) {
+    while (i &lt; strLength) {
         var c = str.charCodeAt(i);
         var alpha = CHAR_INDEX[c];
         if (alpha) {
-            result += &#x22;&#x26;&#x22; + alpha + &#x22;;&#x22;;
+            result += "&amp;" + alpha + ";";
             i++;
             continue;
         }
-        if (c &#x3c; 32 || c &#x3e; 126) {
-            result += &#x27;&#x26;#&#x27; + c + &#x27;;&#x27;;
+        if (c &lt; 32 || c &gt; 126) {
+            result += '&amp;#' + c + ';';
         } else {
             result += str.charAt(i);
         }
@@ -3720,17 +3713,17 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var Entities = require(&#x27;html-entities&#x27;).XmlEntities;
+var Entities = require('html-entities').XmlEntities;
 
 entities = new Entities();
 
-console.log(entities.encode(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp
-;©®
-console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#
-x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;#169;&#x26;#174;
-console.log(entities.encodeNonASCII(&#x27;&#x3c;&#x3e;&#x22;\&#x27;&#x26;©®&#x27;)); // &#x3c;&#x3e;&#x22;\&#x27;&#x26;©®
-console.log(entities.decode(&#x27;&#x26;lt;&#x26;gt;&#x26;quot;&#x26;apos;&#x26;amp;&#x26;copy;&#x26;reg;&#x26;#8710;&#x27;)); // &#
-x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
+console.log(entities.encode('&lt;&gt;"\'&amp;Â©Â®')); // &amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp
+;Â©Â®
+console.log(entities.<span class="apidocCodeKeywordSpan">encodeNonUTF</span>('&lt;&gt;"\'&amp;Â©Â®')); // &amp;#
+x26;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;#169;&amp;#174;
+console.log(entities.encodeNonASCII('&lt;&gt;"\'&amp;Â©Â®')); // &lt;&gt;"\'&amp;Â©Â®
+console.log(entities.decode('&amp;lt;&amp;gt;&amp;quot;&amp;apos;&amp;amp;&amp;copy;&amp;reg;&amp;#8710;')); // &amp;#
+x3c;&gt;"'&amp;&amp;copy;&amp;reg;âˆ†
 ```
 
 ####All HTML entities encoding/decoding####
@@ -3746,3 +3739,4 @@ x3c;&#x3e;&#x22;&#x27;&#x26;&#x26;copy;&#x26;reg;∆
     ]
 </div>
 </div>
+</body></html>
