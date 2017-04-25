@@ -1,6 +1,6 @@
 # npmdoc-html-entities
 
-#### api documentation for  [html-entities (v1.2.0)](https://github.com/mdevils/node-html-entities#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-html-entities.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-html-entities) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-html-entities.svg)](https://travis-ci.org/npmdoc/node-npmdoc-html-entities)
+#### basic api documentation for  [html-entities (v1.2.1)](https://github.com/mdevils/node-html-entities#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-html-entities.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-html-entities) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-html-entities.svg)](https://travis-ci.org/npmdoc/node-npmdoc-html-entities)
 
 #### Faster HTML entities encode/decode library.
 
@@ -39,8 +39,8 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "41948caf85ce82fed36e4e6a0ed371a6664379e2",
-        "tarball": "https://registry.npmjs.org/html-entities/-/html-entities-1.2.0.tgz"
+        "shasum": "0df29351f0721163515dfb9e5543e5f6eed5162f",
+        "tarball": "https://registry.npmjs.org/html-entities/-/html-entities-1.2.1.tgz"
     },
     "engines": [
         "node >= 0.4.0"
@@ -50,7 +50,7 @@
         "lib",
         "LICENSE"
     ],
-    "gitHead": "3a2cd397697c872325f526bb422bdee74f089cda",
+    "gitHead": "dc08bde42ee6468d60ca617061b0b37b2edc45ca",
     "homepage": "https://github.com/mdevils/node-html-entities#readme",
     "keywords": [
         "html",
@@ -89,7 +89,8 @@
             "test/**/*.js"
         ]
     },
-    "version": "1.2.0"
+    "version": "1.2.1",
+    "bin": {}
 }
 ```
 
